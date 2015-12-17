@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.main.common.bean.Result;
-import com.main.common.util.ImportExcelUtil;
+import com.main.common.util.ImportExcelHSSFUtil;
+import com.main.common.util.ImportExcelXSSFUtil;
 
 @Controller
 @RequestMapping("/excelRead")
@@ -42,7 +43,8 @@ public class ImportExcelController {
 					}else{
 						
 						InputStream is = file.getInputStream();				
-						List<String> results = ImportExcelUtil.getExcelStringList(is);
+						//List<String> results = ImportExcelHSSFUtil.getExcelStringList(is);
+						List<String> results = ImportExcelXSSFUtil.getExcelStringList(is);
 					    result.setResults(results);
 						result.setMessage("读取成功!");
 						result.setResultCode("1000"); // 1000上传成功										
